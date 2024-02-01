@@ -1,9 +1,10 @@
 body {
-    background-color: #d7d7d7;
+    background-color: #e6e1e1;
 }
 
-.LoginPage {
 
+
+.LoginPage {
     padding: 20px;
     width: 500px;
     text-align: center;
@@ -13,8 +14,222 @@ body {
     font-family: monospace;
     border-radius: 12px;
     background: white;
-
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 
 
+}
+
+.widget {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.DashboardApp {
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+.DashboardApp img {
+    margin-left: 10px;
+}
+
+#logo {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+
+}
+
+.DashboardApp h1 #logo {
+    vertical-align: middle;
+}
+
+
+
+.navbar {
+    background-color: #180953;
+
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+
+}
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    margin-left: 20%;
+    justify-content: space-between;
+    justify-items: center;
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.container {
+    max-width: 1200px;
+    justify-content: center;
+    height: 50px;
+}
+
+.container li, a {
+    justify-content: center;
+}
+
+
+canvas.chart {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+
+.card {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+
+.charts {
+    width: 30%;
+    height: auto;
+}
+
+.Charts {
+    display: flex;
+    overflow-y: visible;
+    align-items: center;
+    margin-inline-start: 10rem;
+    justify-content: space-evenly;
+}
+
+#barChart {
+    max-height: 90%;
+    max-width: 20%;
+}
+
+#chartId {
+    max-height: 40%;
+    max-width: 30%;
+}
+
+#dchart {
+    max-height: 40%;
+    max-width: 30%;
+}
+
+.dashboard-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.dashboard-card h5 {
+    color: #333;
+}
+
+.dashboard-card p {
+    color: #666;
+
+}
+
+#navbarNav li {
+    justify-content: center;
+    align-items: center;
+
+}
+
+.user-info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin-top: 14px;
+}
+
+.user-logo {
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-name {
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.small-card {
+    width: 300px;
+    height: 150px;
+    border: 1px solid #ddd;
+    display: inline-block;
+
+    border-radius: 8px;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-inline-start: 12%;
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.small-card :hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.small-card .card-body {
+    padding: 15px;
+}
+
+.small-card h6 {
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.small-card p {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 5px;
 }
