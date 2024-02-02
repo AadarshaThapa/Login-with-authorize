@@ -1,87 +1,52 @@
-var myApp = angular.module('myApp',  ['ngRoute', 'chart.js']);
+var myApp = angular.module('myApp', ['ngRoute', 'chart.js']);
 
-myApp.config(['$routeProvider' ,function($routeProvider){
-    $routeProvider
-    .when('/login',{
-        templateUrl: 'LoginPage.html',
-       
-    })
-    .when('/dashboard',{
-        templateUrl: 'Dashboard.html',
-        controller: 'DashboardController'
-    })
-    .otherwise({
-        redirectTo:'/login'
-    })
-}])
+myApp.service('LoginService', function () {
+    var loginStatus = false;
 
-
-myApp.controller('DashboardController', function ($scope) {
-
-    $scope.barData = {
-        labels: ['January', 'February', 'March', 'April'],
-        datasets: [{
-            label: 'Bar Chart',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1,
-            data: [65, 59, 80, 81, 56]
-        }]
-    }
-
-    $scope.barOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            y: {
-                beginAtZero: true,
-                max: 100
-            }
-        }
+    this.setLoginStatus = function (status) {
+        loginStatus = status;
     };
 
-    var ctx = document.getElementById('barChart').getContext('2d');
+    this.getLoginStatus = function () {
+        return loginStatus;
+    };
+});
 
-    
-    $scope.barChart = new Chart(ctx, {
-        type: 'bar',
-        data: $scope.barData,
-        options: $scope.barOptions
-    });
+myApp.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider
+        .when('/login', {
+            templateUrl: 'LoginPage.html',
+        })
+        .when('/dashboard', {
+            templateUrl: 'Dashboard.html',
+            controller: 'DashboardController'
+        })
+        .otherwise({
+            redirectTo: '/login'
+        });
+}])
 
-     $scope.pieChart = new Chart(ctx, {
-        type: 'bar',
-        data: $scope.barData,
-        options: $scope.barOptions
-    });
+myApp.controller('DashboardController', function ($scope, LoginService) {
 
-    var dchrt = document.getElementById("dchart").getContext("2d");
-      var chartId = new Chart(dchrt, {
-         type: 'doughnut',
-         data: {
-            labels: ["HTML", "CSS", "JAVASCRIPT", "CHART.JS", "JQUERY", "BOOTSTRP"],
-            datasets: [{
-            label: "online tutorial subjects",
-            data: [20, 40, 13, 35, 20, 38],
-            backgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'gold', 'lightblue'],
-            hoverOffset: 5
-            }],
-         },
-         options: {
-            responsive: false,
-         },
-      });
+    $scope.Logger = LoginService.getLoginStatus();
+
+    $scope.$watch(
+        function () {
+            return LoginService.getLoginStatus();
+        },
+        function (newStatus) {
+            $scope.Logger = newStatus;
+            if (newStatus) {
+                createCharts();
+            }
+        }
+    );
 
     $scope.lists = [
-        { title: 'User1', label: "Insights", remarks:"Performing Good" },
-        { title: 'User2', label: "Insights", remarks:"Performing Good" },
-        { title: 'User3', label: "Insights", remarks:"Performing Good" },
-
+        { title: 'User1', label: "Insights", remarks: "Performing Good" },
+        { title: 'User2', label: "Insights", remarks: "Performing Good" },
+        { title: 'User3', label: "Insights", remarks: "Performing Good" },
     ];
-
-
-    
-
 
     $scope.charts = [
         {
@@ -91,46 +56,63 @@ myApp.controller('DashboardController', function ($scope) {
             labels: ['January', 'February', 'March', 'April'],
             series: ['Series A', 'Series B'],
             options: { legend: { display: true } }
-        }]
-
-})
-
-// var app = angular.module('dashboardApp', ['chart.js']);
-
-//         app.controller('DashboardController', function ($scope) {
-
-//             $scope.lists = [
-//                 { title: 'List 1', items: ['Item 1', 'Item 2', 'Item 3'] },
-//                 { title: 'List 2', items: ['Item A', 'Item B', 'Item C'] },
-
-//             ];
+        }
+    ];
 
 
-//             $scope.dummyTiles = [
-//                 { title: 'Tile 1', content: 'Content for Tile 1' },
-//                 { title: 'Tile 2', content: 'Content for Tile 2' },
-//                 { title: 'Tile 3', content: 'Content for Tile 3' }
+    function createCharts() {
+        var barData = {
+            labels: ['January', 'February', 'March', 'April'],
+            datasets: [{
+                label: 'Bar Chart',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: [65, 59, 80, 81, 56]
+            }]
+        };
 
-//             ];
+        var barOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        };
+
+        var barCtx = document.getElementById('barChart').getContext('2d');
+        var barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: barData,
+            options: barOptions
+        });
+
+        var pieCtx = document.getElementById('dchart').getContext('2d');
+        var pieChart = new Chart(pieCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ["HTML", "CSS", "JAVASCRIPT", "CHART.JS", "JQUERY", "BOOTSTRP"],
+                datasets: [{
+                    label: "online tutorial subjects",
+                    data: [20, 40, 13, 35, 20, 38],
+                    backgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'gold', 'lightblue'],
+                    hoverOffset: 5
+                }],
+            },
+            options: {
+                responsive: false,
+            },
+        });
 
 
-//             $scope.charts = [
-//                 {
-//                     id: 'chart1',
-//                     title: 'Line Chart',
-//                     data: [[65, 59, 80, 81, 56, 55, 40], [28, 48, 40, 19, 86, 27, 90]],
-//                     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-//                     series: ['Series A', 'Series B'],
-//                     options: { legend: { display: true } }
-//                 },
-
-//             ];
-//         });
+    }
+});
 
 
-
-
-myApp.controller('myController', function ($scope, $location) {
+myApp.controller('myController', function ($scope, $location,LoginService) {
 
  
     if (!localStorage.getItem('LoginCred')) {
@@ -139,7 +121,6 @@ myApp.controller('myController', function ($scope, $location) {
             password: 'test'
         };
 
- 
         localStorage.setItem('LoginCred', JSON.stringify([defaultLoginData]));
     }
 
@@ -159,20 +140,27 @@ myApp.controller('myController', function ($scope, $location) {
         $scope.loginDataList = [];
     }
 
+
     $scope.loginButton = function (event) {
+        Logger="";
+        $scope.Logger=false;
         // event.preventDefault(); 
        
         var isLoginSuccessful = false;
-        for (var i = 0; i < $scope.loginDataList.length; i++) {
-            var storedCredentials = $scope.loginDataList[i];
-            if (storedCredentials.username === $scope.loginData.username && storedCredentials.password === $scope.loginData.password) {
-                isLoginSuccessful = true;
-                break;
-            }
+    for (var i = 0; i < $scope.loginDataList.length; i++) {
+        var storedCredentials = $scope.loginDataList[i];
+        if (
+            storedCredentials.username === $scope.loginData.username &&
+            storedCredentials.password === $scope.loginData.password
+        ) {
+            isLoginSuccessful = true;
+            $scope.Logger = true;
+            LoginService.setLoginStatus(true);
+            break;
         }
+    }
 
-        console.log($scope.loginDataList)
-    
+
         if (isLoginSuccessful) {
             $location.path('/dashboard');  
         }
@@ -182,45 +170,10 @@ myApp.controller('myController', function ($scope, $location) {
     };
 });
 
-  //can use window method to redirect by
+
+
+
+
+
+  //  can use window method to redirect by
   //  $window.location.href = 'Dashboard.html';
-
-     // $scope.redirect = function(){
-      
-    //     var url = "https://http://127.0.0.1:5500/directory.html";
-    //     $window.location.href = url;
-    //   }
-    
-
-    // $scope.dummyTiles = [
-    //     { title: 'Tile 1', content: 'Content for Tile 1' },
-    //     { title: 'Tile 2', content: 'Content for Tile 2' },
-    //     { title: 'Tile 3', content: 'Content for Tile 3' }
-
-    // ];
-
-    // var chrt = document.getElementById("chartId").getContext("2d");
-
-    //   $scope.chartId = new Chart(chrt, {
-    //      type: 'radar',
-    //      data: {
-    //         labels: ['January', 'February', 'March', 'April'],
-    //         datasets: [{
-    //            label: "online tutorial subjects",
-    //            data: [20, 40, 33, 35],
-    //            backgroundColor: ['lightgrey'],
-    //            pointBackgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'lightblue', 'gold'],
-    //            borderColor: ['black'],
-    //            borderWidth: 1,
-    //            pointRadius: 6,
-    //         }],
-    //      },
-    //      options: {
-    //         responsive: false,
-    //         elements: {
-    //            line: {
-    //               borderWidth: 3
-    //            }
-    //         }
-    //      },
-    //   });

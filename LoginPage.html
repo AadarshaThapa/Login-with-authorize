@@ -3,7 +3,6 @@
     <form name="loginForm" ng-submit="loginButton()">
         <div class=" form-group">
             Username:
-
             <input ng-model="loginData.username" type="text" placeholder="Enter your username" required autofocus />
         </div><br>
 
@@ -11,14 +10,9 @@
             Password:
             <input ng-model="loginData.password" type="password" required />
         </div>
-        <p>
+        <p class="forgot-pwd">
             <a href="#">Forgot your password? </a>
         </p>
-        <button type="Submit" class="Login" ng-click="loginButton()">Login</button>
+        <button type="Submit" class="Login-button" ng-click="loginButton()">Login</button>
     </form>
 </div>
-
-<!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person"
-                    viewBox="0 0 16 16">
-
-                </svg> -->

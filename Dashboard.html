@@ -1,10 +1,13 @@
-<div ng-app="myApp" class="DashboardApp">
+<div ng-app="myApp" class="DashboardApp" ng-if="Logger">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
 
 
     <h1>
@@ -64,16 +67,23 @@
         </div>
     </div>
 </div>
-<div class="dashboard-card">
+<div class="dashboard-card" ng-if="Logger" ng-controller="DashboardController">
     <h4>Admin Overview</h4>
     <p></p>
     <a href="#" class="btn btn-primary">View Details</a>
 </div>
 
 
+<div class="Error404" ng-if="!Logger">
+    <h1>ERROR 404!</h1>
+    <p>Please Log In to Continue</p>
+
+
+</div>
+
 
 <div class="Charts">
-    <div ng-repeat="chart in charts" class="charts">
+    <div ng-repeat="chart in charts" ng-if="Logger" class="charts">
         <canvas id="{{ chart.id }}" class="chart chart-line" chart-data="chart.data" chart-labels="chart.labels"
             chart-series="chart.series" chart-options="chart.options"></canvas>
     </div>
@@ -83,86 +93,7 @@
     <canvas id="dchart" aria-label="chart" height="250" width="300"></canvas>
 
     <canvas id="chartId" aria-label="chart" height="200" width="200"></canvas>
-
-
-
 </div>
 
 </div>
 </div>
-
-
-
-
-<!-- <div id="myChart"></div> -->
-
-<!-- <script>
-        const ctx = document.getElementById('myChart');
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script> -->
-
-<!-- <script>
-        var charts = [
-            {
-                id: 'chart1',
-                title: 'Line Chart',
-                data: [[65, 59, 80, 81, 56, 55, 40], [28, 48, 40, 19, 86, 27, 90]],
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                series: ['Series A', 'Series B'],
-                options: { legend: { display: true } }
-            },
-        ];
-    </script> -->
-
-
-
-<!-- <div ng-controller="DashboardController" class="dashboard-container" ng-app="dashboardApp">
-
-
-    <div class="widget" ng-repeat="tile in dummyTiles">
-        <h2>{{ tile.title }}</h2>
-        <p>{{ tile.content }}</p>
-    </div>
-
-    <div class="widget chart-container" ng-repeat="chart in charts">
-        <h2>{{ chart.title }}</h2>
-        <canvas id="{{ chart.id }}" class="chart chart-line" chart-data="chart.data" chart-labels="chart.labels"
-            chart-series="chart.series" chart-options="chart.options"></canvas>
-    </div>
-
-</div> -->
-
-
-
-<!-- 
-<div>
-   
-
-
-
-    <div>
-        <a href="#/list">List Tile</a>
-        <a href="#/view">View Tile</a>
-    </div>
-
-
-
-</div> -->

@@ -1,21 +1,112 @@
+* {
+    font-family: 'Urbanist', sans-serif;
+}
+
 body {
-    background-color: #e6e1e1;
+    background-color: #ffffff;
+
 }
 
 
 
 .LoginPage {
-    padding: 20px;
-    width: 500px;
+    padding: 30px;
+    width: 600px;
+    height: auto;
     text-align: center;
     margin: 0 auto;
     border: 2px solid #d7d7d7;
-    margin-top: 5rem;
+    margin-top: 12rem;
     font-family: monospace;
+    font-size: larger;
+    color: white;
     border-radius: 12px;
     background: white;
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    background: linear-gradient(135deg, #C56CD6 0%, #3425AF 100%);
 }
+
+.LoginPage a {
+    color: whitesmoke;
+    font-size: large;
+}
+
+.LoginPage input[type=text] {
+    width: 30%;
+    height: 40%;
+}
+
+.LoginPage input[type=password] {
+    margin-left: 0.5rem;
+    width: 30%;
+    height: 40%;
+}
+
+
+.Login-button {
+    appearance: button;
+    background-color: #4D4AE8;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));
+    border: 1px solid #4D4AE8;
+    border-radius: 1rem;
+    box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset, rgba(46, 54, 80, 0.075) 0 1px 1px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+    padding: .5rem 1rem;
+    text-align: center;
+    text-transform: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+
+.Login-button :focus:not(:focus-visible),
+.Login-button :focus {
+    outline: 0;
+}
+
+.Login-button :hover {
+    background-color: #3733E5;
+    border-color: #3733E5;
+}
+
+.Login-button :focus {
+    background-color: #413FC5;
+    border-color: #3E3BBA;
+    box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset, rgba(46, 54, 80, 0.075) 0 1px 1px, rgba(104, 101, 235, 0.5) 0 0 0 .2rem;
+}
+
+.Login-button :active {
+    background-color: #3E3BBA;
+    background-image: none;
+    border-color: #3A38AE;
+    box-shadow: rgba(46, 54, 80, 0.125) 0 3px 5px inset;
+}
+
+.Login-button active:focus {
+    box-shadow: rgba(46, 54, 80, 0.125) 0 3px 5px inset, rgba(104, 101, 235, 0.5) 0 0 0 .2rem;
+}
+
+.Login-button:disabled {
+    background-image: none;
+    box-shadow: none;
+    opacity: .65;
+    pointer-events: none;
+}
+
+
+
+
 
 .dashboard-container {
     display: flex;
@@ -110,13 +201,14 @@ canvas.chart {
 .card {
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+    padding-left: 30px;
 }
 
 
 .charts {
     width: 30%;
     height: auto;
+    margin-top: 2rem;
 }
 
 .Charts {
@@ -146,9 +238,15 @@ canvas.chart {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
+    height: auto;
+    padding-left: 30px;
+    padding-top: 20px;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    box-shadow: 35px 33px 22px 8px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -158,7 +256,12 @@ canvas.chart {
 
 .dashboard-card p {
     color: #666;
+    font-size: smaller;
 
+}
+
+.card-text {
+    font-style: italic;
 }
 
 #navbarNav li {
@@ -199,7 +302,7 @@ canvas.chart {
     height: 150px;
     border: 1px solid #ddd;
     display: inline-block;
-
+    border-radius: 18px;
     border-radius: 8px;
     text-align: center;
     justify-content: center;
@@ -207,6 +310,12 @@ canvas.chart {
     margin-inline-start: 12%;
 
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+    background: linear-gradient(150deg, #39ef74, #4600f1 100%);
+
 }
 
 .small-card :hover {
@@ -226,10 +335,32 @@ canvas.chart {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 8px;
+    color: whitesmoke;
+
 }
 
 .small-card p {
     color: #666;
+    color: whitesmoke;
+
     font-size: 12px;
     margin-bottom: 5px;
+}
+
+.Error404 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #777777;
+}
+
+.Error404 h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.Error404 p {
+    font-size: 1.5em;
 }
