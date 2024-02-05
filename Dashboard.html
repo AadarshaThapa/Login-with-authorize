@@ -10,8 +10,7 @@
         <img id="logo" src="dashboard.png" alt="logo">
         Welcome to Login Dashboard!
     </h1>
-    <div> <button ng-click="navigateToDetails()">CLICKKK</button>
-    </div>
+
 
 
     <div class=" user-info">
@@ -41,12 +40,12 @@
     </nav>
 
 
-    <div class="small-card" ng-repeat="list in lists" ng-click="navigateToDetails(list,$index,list.value)">
+    <div class="small-card" ng-repeat="tile in tiles" ng-click="navigateToDetails(tile,$index,tile.value)">
         <div class="card-body">
-            <p class="card-value">{{list.value}}</p>
-            <h5 class="card-item">{{list.item}}</h5>
-            <p class="card-title">{{list.title}}</p>
-            <p class="card-remarks">{{list.remarks}}</p>
+            <p class="card-value">{{tile.value}}</p>
+            <h5 class="card-item">{{tile.item}}</h5>
+            <p class="card-title">{{tile.title}}</p>
+            <p class="card-remarks">{{tile.remarks}}</p>
 
         </div>
     </div>

@@ -1,33 +1,33 @@
-<div id="bookListWrapper" ng-app="myApp" ng-controller="DashboardController">
+<div id="bookListWrapper" ng-app="myApp">
     <div class="inputform">
         <form>
-            <div ng-repeat="item in storedData" class="inv-card">
+            <div class="inv-card">
                 <div class="form-group">
                     <label for="number">Number:</label>
-                    <input name="number" type="text" ng-model="item.number" class="form-control"
-                        placeholder="{{item.number}}" required>
+                    <input name="number" type="text" ng-model="selectedTile.number" class="form-control"
+                        placeholder="{{selectedTile.number}}" required>
                 </div>
                 <div class="form-group">
                     <label for="item">Item:</label>
-                    <input name="item" type="text" ng-model="item.item" class="form-control" placeholder="{{item.item}}"
-                        required>
+                    <input name="item" type="text" ng-model="selectedTile.item" class="form-control"
+                        placeholder="{{selectedTile.item}}" required>
                 </div>
                 <div class="form-group">
                     <label for="value">Value:</label>
-                    <input name="value" type="text" ng-model="item.value" class="form-control"
-                        placeholder="{{item.value}}" required>
+                    <input name="value" type="text" ng-model="selectedTile.value" class="form-control"
+                        placeholder="{{selectedTile.value}}" required>
                 </div>
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input name="title" type="text" ng-model="item.title" class="form-control"
-                        placeholder="{{item.title}}" required>
+                    <input name="title" type="text" ng-model="selectedTile.title" class="form-control"
+                        placeholder="{{selectedTile.title}}" required>
                 </div>
                 <div class="form-group">
                     <label for="remarks">Remarks:</label>
-                    <input name="remarks" type="text" ng-model="item.remarks" class="form-control"
-                        placeholder="{{item.remarks}}" required>
+                    <input name="remarks" type="text" ng-model="selectedTile.remarks" class="form-control"
+                        placeholder="{{selectedTile.remarks}}" required>
                 </div>
-                <img ng-src="{{item.imgUrl}}" alt="{{item.name}}" class="card-image">
+                <img ng-src="{{selectedTile.imgUrl}}" alt="{{selectedTile.name}}" class="card-image">
                 <hr>
             </div>
         </form>
@@ -37,23 +37,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</ul>
-</div>
-
-</div> -->

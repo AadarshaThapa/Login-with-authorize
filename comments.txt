@@ -13,3 +13,4 @@
 
   //  can use window method to redirect by
   //  $window.location.href = 'Dashboard.html';
+  /    <div class="small-card" ng-repeat="list in [lists]  // storedData" ng-click="navigateToDetails(list,$index,list.value)">

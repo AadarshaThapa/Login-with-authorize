@@ -1,5 +1,51 @@
 var myApp = angular.module('myApp', ['ngRoute', 'chart.js']);
 
+myApp.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider
+        .when('/login', {
+            templateUrl: 'LoginPage.html',
+        })
+        .when('/dashboard', {
+            templateUrl: 'Dashboard.html',
+            controller: 'DashboardController'
+        })
+        .when('/details', {
+            templateUrl: 'Form.html',
+            controller: 'DetailsController'
+        })
+        .otherwise({
+            redirectTo: '/login'
+        });
+}]);
+
+myApp.factory("tilesService", function () {
+    var tiles = [
+        { "number": "9876", "item": "Item1", "value": "543210", imgUrl: "AUpscaled.png", "title": "CONSTRUCTION & INFRASTRUCTURE", "remarks": "Agility to oversee any avoidable repairs, compliance failures." },
+        { "number": "1234", "item": "Item2", "value": "678899", imgUrl: "AUpscaled.png", "title": "INDUSTRIAL MANUFACTURING", "remarks": "Guide your technicians with digital processes to avoid downtime." },
+        { "number": "4567", "item": "Item3", "value": "987654", imgUrl: "AUpscaled.png", "title": "ENERGY & UTILITIES", "remarks": "Streamline work orders and manage workflows most efficiently." },
+    ];
+
+    return {
+        getTiles: function () {
+            return tiles;
+        }
+    };
+});
+
+myApp.factory("indvTilesService", function () {
+    var indivTiles = [];
+
+    return {
+        getTiles: function () {
+            return indivTiles;
+        },
+        addTile: function (tile) {
+            indivTiles.push(tile);
+            console.log(indivTiles);
+        },
+    };
+});
+
 myApp.service('LoginService', function () {
     var loginStatus = false;
 
@@ -12,123 +58,17 @@ myApp.service('LoginService', function () {
     };
 });
 
-myApp.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-        .when('/login', {
-            templateUrl: 'LoginPage.html',
-        })
-        .when('/dashboard', {
-            templateUrl: 'Dashboard.html',
-            controller: 'DashboardController'
-        })
-        .when('/details', {
-            templateUrl: 'Form.html',
-            controller: 'DashboardController'
-        })
-        .otherwise({
-            redirectTo: '/login'
-        });
-}])
-myApp.factory('DataService', function () {
-    var data1 = [];
+myApp.controller('DashboardController', function ($scope, $location, LoginService, tilesService, indvTilesService) {
+    $scope.tiles = tilesService.getTiles();
 
-    return {
-        setData: function (newData) {
-            data1 = angular.copy(newData);
-        },
-        getData: function () {
-            return data1;
-        }
-    };
-});
-
-
-myApp.controller('DashboardController', function ($scope,  $location,LoginService) {
-    var dataKey = 'yourDataKey'; 
-
-    var data1 = JSON.parse(localStorage.getItem(dataKey)) || [];
-
-
-    $scope.selectedCard = {};
-  
-    $scope.data =[];
-    $scope.lists = []; 
-
-   
-    $scope.lists = [
-        { "number": "9876", "item": "Item1", "value": "543210", imgUrl: "AUpscaled.png", "title": "CONSTRUCTION & INFRASTRUCTURE", "remarks": "Agility to oversee any avoidable repairs, compliance failures." },
-        { "number": "1234", "item": "Item2", "value": "678899", imgUrl: "AUpscaled.png", "title": "INDUSTRIAL MANUFACTURING", "remarks": "Guide your technicians with digital processes to avoid downtime." },
-        { "number": "4567", "item": "Item3", "value": "987654", imgUrl: "AUpscaled.png", "title": "ENERGY & UTILITIES", "remarks": "Streamline work orders and manage workflows most efficiently." },
-    ];
-
-    $scope.navigateToDetails = function(index,name) {
-        data2=[];
-        data1 = [];
-        localStorage.removeItem(dataKey);
-
-     
-        $scope.selectedCard = {};
-        if (data1.length > 0) {
-            $scope.selectedCard = angular.copy(data1[0]);
-        }
-
-        console.log($scope.selectedCard)
-        $scope.data.push($scope.lists[name])
-        data1.push($scope.data[0]);
-
-        localStorage.setItem(dataKey, JSON.stringify(data1));
-
-        
-        
-
-        // var clickedElement = angular.element(event.currentTarget);
-       
-        // console.log('Clicked element:'+ index , clickedElement);
-        // console.log('index: ', index);
-        // console.log('name: ', name); 
-
+    $scope.navigateToDetails = function (tile) {
+        indvTilesService.addTile(tile);
         $location.path('/details');
-        
-        
-    };
-  
-
-    var storedData = localStorage.getItem(dataKey);
-    $scope.storedData = storedData ? JSON.parse(storedData) : [];
-
-
-    // $scope.selectedCard = angular.copy($scope.lists[name]);
-    // console.log($scope.selectedCard)
- 
-   
-    $scope.goBack = function (event){
-        $location.path('/dashboard');  
-     }
-   
-     $scope.Edit = function () {
-      
-        var latestIndex = $scope.data1.length - 1;
-
-  
-        // $scope.storedData[latestIndex].number = $scope.selectedCard.number;
-        // $scope.storedData[latestIndex].item = $scope.selectedCard.item;
-        // $scope.storedData[latestIndex].value = $scope.selectedCard.value;
-        // $scope.storedData[latestIndex].title = $scope.selectedCard.title;
-        // $scope.storedData[latestIndex].remarks = $scope.selectedCard.remarks;
-        data1[latestIndex].number = $scope.selectedCard.number;
-        data1[latestIndex].item = $scope.selectedCard.item;
-        data1[latestIndex].value = $scope.selectedCard.value;
-        data1[latestIndex].title = $scope.selectedCard.title;
-        data1[latestIndex].remarks = $scope.selectedCard.remarks;
-
-      
-        localStorage.setItem(dataKey, JSON.stringify(data1));
-        console.log(data1)
-
-  
-        localStorage.setItem(dataKey, JSON.stringify($scope.storedData));
     };
 
+    $scope.goBack = function (event) {
+        $location.path('/dashboard');
+    };
 
     $scope.Logger = LoginService.getLoginStatus();
 
@@ -143,7 +83,6 @@ myApp.controller('DashboardController', function ($scope,  $location,LoginServic
             }
         }
     );
-
 
     $scope.charts = [
         {
@@ -203,46 +142,43 @@ myApp.controller('DashboardController', function ($scope,  $location,LoginServic
             },
         });
 
-
     }
 });
 
+myApp.controller('DetailsController', function ($scope, $location, indvTilesService,tilesService) {
 
-myApp.controller('myController', function ($scope, $location,LoginService) {
+    var selectedTiles = indvTilesService.getTiles();
+    $scope.selectedTile = selectedTiles[selectedTiles.length - 1];
 
-    $scope.selectedCard = {};
-    $scope.lists = []; // Initialize lists as an empty array
+    $scope.Edit = function () {
+        var index = -1;
+        for (var i = 0; i < tilesService.getTiles().length; i++) {
+            if (tilesService.getTiles()[i].number === $scope.selectedTile.number) {
+                index = i;
+                break;
+            }
+        }
 
-    // Populate lists with data
-    $scope.lists = [
-        { "number": "9876", "item": "Item1", "value": "543210", imgUrl: "AUpscaled.png", "title": "CONSTRUCTION & INFRASTRUCTURE", "remarks": "Agility to oversee any avoidable repairs, compliance failures." },
-        { "number": "1234", "item": "Item2", "value": "678899", imgUrl: "AUpscaled.png", "title": "INDUSTRIAL MANUFACTURING", "remarks": "Guide your technicians with digital processes to avoid downtime." },
-        { "number": "4567", "item": "Item3", "value": "987654", imgUrl: "AUpscaled.png", "title": "ENERGY & UTILITIES", "remarks": "Streamline work orders and manage workflows most efficiently." },
-    ];
+        if (index !== -1) {
+            tilesService.getTiles()[index] = angular.copy($scope.selectedTile);
+            console.log('Tile updated:', tilesService.getTiles()[index]);
+        } else {
+            console.log('Tile not found for updating.');
+        }
+    };
 
-    $scope.navigateToDetails = function(index,name) {
-     
-        $scope.selectedCard = angular.copy($scope.lists[name]);
-        console.log($scope.selectedCard)
+    $scope.goBack = function () {
+        $location.path('/dashboard');
+    };
+});
 
-        var clickedElement = angular.element(event.currentTarget);
-        // console.log('Clicked element:'+ index , clickedElement);
-        // console.log('index: ', index);
-        // console.log('name: ', name); 
 
-        $location.path('/details');
+myApp.controller('myController', function ($scope, $location, LoginService) {
+    $scope.goBack = function (event) {
+        $location.path('/dashboard');
     };
 
    
-
-
-    
-        
- $scope.goBack = function (event){
-    $location.path('/dashboard');  
- }
-
-
     if (!localStorage.getItem('LoginCred')) {
         var defaultLoginData = {
             username: 'test',
@@ -275,6 +211,7 @@ myApp.controller('myController', function ($scope, $location,LoginService) {
         // event.preventDefault(); 
        
         var isLoginSuccessful = false;
+
     for (var i = 0; i < $scope.loginDataList.length; i++) {
         var storedCredentials = $scope.loginDataList[i];
         if (
@@ -285,9 +222,7 @@ myApp.controller('myController', function ($scope, $location,LoginService) {
             $scope.Logger = true;
             LoginService.setLoginStatus(true);
             break;
-        }
-    }
-
+        }}
 
         if (isLoginSuccessful) {
             $location.path('/dashboard');  
@@ -297,5 +232,3 @@ myApp.controller('myController', function ($scope, $location,LoginService) {
         }
     };
 });
-
-
