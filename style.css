@@ -338,6 +338,7 @@ canvas.chart {
 
 .card-value {
     font-style: italic;
+    font-weight: bold;
     padding-left: 80%;
     padding-top: -10px;
     color: rebeccapurple;
@@ -499,4 +500,36 @@ canvas.chart {
 
 .book-details {
     margin-top: 20px;
+}
+
+
+
+.card-list {
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-list {
+    margin-right: 20px;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
 }

@@ -1,0 +1,28 @@
+<div ng-app="myApp" class="DashboardApp">
+
+
+    <div class=" card-list" ng-if="Logger">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Messages Count</th>
+            </tr>
+            <tr ng-repeat="item in listtables">
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.messagesCount}}</td>
+            </tr>
+        </table>
+
+
+
+    </div>
+    <br>
+    <div class="card-list" ng-repeat="item in listtables" ng-if="Logger">
+        <h5>{{item.name}}</h5>
+        <p>Email: {{item.email}}</p>
+        <p>Messages Count: {{item.messagesCount}}</p>
+    </div>
+
+</div>

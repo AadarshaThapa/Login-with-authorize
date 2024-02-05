@@ -31,7 +31,7 @@
                         <a class="nav-link" href="#">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reports</a>
+                        <a class="nav-link" href="#reports">Reports</a>
                     </li>
 
                 </ul>
@@ -58,7 +58,7 @@
                 <div class="card-body">
                     <h4 class="jumbo-title">Portfolio Performance</h4>
                     <p class="card-text">View Contents Here...</p>
-                    <a href="#" class="btn btn-primary">View All Reports</a>
+                    <a href="#reports" class="btn btn-primary">View All Reports</a>
                 </div>
             </div>
         </div>
@@ -71,17 +71,26 @@
 <div class="dashboard-card" ng-if="Logger" ng-controller="DashboardController">
     <h4>Admin Overview</h4>
     <p></p>
-    <a href="#" class="btn btn-primary">View Details</a>
+    <a href="#reports" class="btn btn-primary">View Details</a>
 </div>
 
-
-<div class="Error404" ng-if="!Logger">
-    <h1>ERROR 404!</h1>
-    <p>Please Log In to Continue</p>
-    <button class="Login-button"><a href="#login">Log In</a></button>
+<div class="card-list" ng-if="Logger">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Messages Count</th>
+        </tr>
+        <tr ng-repeat="item in listtables" ng-if="Logger">
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.messagesCount}}</td>
+        </tr>
+    </table>
 
 
 </div>
+
 
 
 <div class="Charts">
@@ -98,4 +107,10 @@
 </div>
 
 </div>
+</div>
+
+<div class="Error404" ng-if="!Logger">
+    <h1>ERROR 404!</h1>
+    <p>Please Log In to Continue</p>
+    <button class="Login-button"><a href="#login">Log In</a></button>
 </div>
