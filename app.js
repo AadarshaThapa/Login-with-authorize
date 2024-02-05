@@ -211,9 +211,7 @@ myApp.controller('DashboardController', function ($scope,  $location,LoginServic
 myApp.controller('myController', function ($scope, $location,LoginService) {
 
     $scope.selectedCard = {};
-    $scope.lists = []; // Initialize lists as an empty array
 
-    // Populate lists with data
     $scope.lists = [
         { "number": "9876", "item": "Item1", "value": "543210", imgUrl: "AUpscaled.png", "title": "CONSTRUCTION & INFRASTRUCTURE", "remarks": "Agility to oversee any avoidable repairs, compliance failures." },
         { "number": "1234", "item": "Item2", "value": "678899", imgUrl: "AUpscaled.png", "title": "INDUSTRIAL MANUFACTURING", "remarks": "Guide your technicians with digital processes to avoid downtime." },
