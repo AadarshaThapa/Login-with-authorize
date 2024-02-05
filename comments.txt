@@ -2,3 +2,14 @@
                     viewBox="0 0 16 16">
 
                 </svg> -->
+
+
+                 { "number": "5432", "item": "Item 4", "value": "123456", "title": "FOOD BEVERAGES & FMCG", "remarks": "Issue and rationalize alarms, all in one place." },
+            { "number": "7890", "item": "Item 5", "value": "987654", "title": "MARITIME", "remarks": "Reduce the time spent during physical inspections and obliterate physical barriers." }
+        main div app  ng if lgger
+
+
+        
+
+  //  can use window method to redirect by
+  //  $window.location.href = 'Dashboard.html';

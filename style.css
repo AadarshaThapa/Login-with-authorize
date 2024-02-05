@@ -2,12 +2,15 @@
     font-family: 'Urbanist', sans-serif;
 }
 
-body {
-    background-color: #ffffff;
-
+@media only screen and (max-width: 600px) {
+    div.example {
+        font-size: 30px;
+    }
 }
 
-
+body {
+    background-color: #ffffff;
+}
 
 .LoginPage {
     padding: 30px;
@@ -69,7 +72,6 @@ body {
     vertical-align: middle;
 }
 
-
 .Login-button :focus:not(:focus-visible),
 .Login-button :focus {
     outline: 0;
@@ -105,15 +107,10 @@ body {
 }
 
 
-
-
-
 .dashboard-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-
-
 }
 
 .widget {
@@ -153,7 +150,6 @@ body {
 
 .navbar {
     background-color: #180953;
-
 }
 
 .navbar-brand,
@@ -173,9 +169,7 @@ body {
     justify-content: space-between;
     justify-items: center;
     display: flex;
-
     align-items: center;
-
 }
 
 
@@ -244,7 +238,6 @@ canvas.chart {
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
     margin-top: 2rem;
-
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     box-shadow: 35px 33px 22px 8px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 
@@ -260,9 +253,7 @@ canvas.chart {
 
 }
 
-.card-text {
-    font-style: italic;
-}
+
 
 #navbarNav li {
     justify-content: center;
@@ -284,9 +275,7 @@ canvas.chart {
 
 .user-logo {
     width: 30px;
-
     height: 30px;
-
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -303,49 +292,68 @@ canvas.chart {
     border: 1px solid #ddd;
     display: inline-block;
     border-radius: 18px;
-    border-radius: 8px;
     text-align: center;
     justify-content: center;
     margin-top: 20px;
     margin-inline-start: 12%;
-
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    -webkit-border-radius: 18px;
-    -moz-border-radius: 18px;
-    -ms-border-radius: 18px;
-    -o-border-radius: 18px;
-    background: linear-gradient(150deg, #39ef74, #4600f1 100%);
+    color: black;
+    /* background: linear-gradient(150deg, #39ef74, #4600f1 100%); */
 
 }
 
 .small-card :hover {
-    transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
 }
 
 .small-card .card-body {
-    padding: 15px;
+    /* padding: 15px; */
+    /* padding-bottom: 40px;
+    margin-bottom: 20px; */
 }
 
-.small-card h6 {
-    color: #333;
+.card-item {
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 8px;
-    color: whitesmoke;
+}
 
+.card-title {
+    font-weight: bold;
+    font-size: 1rem;
+    padding-top: -2rem;
+    padding-bottom: 20px;
+    color: rgb(0, 108, 0);
+}
+
+.jumbo-title {
+    font-weight: bold;
+    font-size: 1rem;
+    padding-top: -2rem;
+    padding-bottom: 20px;
+}
+
+.card-value {
+    font-style: italic;
+    padding-left: 80%;
+    padding-top: -10px;
+    color: rebeccapurple;
 }
 
 .small-card p {
-    color: #666;
-    color: whitesmoke;
-
-    font-size: 12px;
-    margin-bottom: 5px;
+    font-size: 14px;
+    margin-bottom: -1.4rem;
 }
+
+.card-remarks {
+    font-style: italic;
+    font-size: larger;
+}
+
+
 
 .Error404 {
     position: absolute;
@@ -363,4 +371,132 @@ canvas.chart {
 
 .Error404 p {
     font-size: 1.5em;
+}
+
+#bookListWrapper {
+    width: 100%;
+    padding: 10px;
+}
+
+
+
+#bookListWrapper .book {
+    border: 1px solid gray;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#bookListWrapper .book .book-details {
+    margin-left: 160px;
+}
+
+.book-details h3 {
+    color: #333;
+}
+
+.book-details p {
+    color: #555;
+}
+
+.book-details button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-details button:hover {
+    background-color: #297fb8;
+}
+
+.book img {
+
+    max-width: 100%;
+    height: auto;
+    float: left;
+    margin-right: 40px;
+    border-radius: 5px;
+    ;
+}
+
+.book {
+    list-style: none;
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    width: 100px;
+    height: auto;
+}
+
+.text-editor {
+    font-weight: bolder;
+    font-size: 2rem;
+    margin-top: 1rem;
+    width: 80%;
+    padding-left: 2rem;
+}
+
+
+.inputform ::placeholder {
+    color: black;
+}
+
+.input-with-padding {
+    padding-left: 10px;
+}
+
+.gender {
+    max-width: 10%;
+    height: auto;
+
+}
+
+.myForm input[type="text"],
+.myForm input[type="number"],
+.myForm input[type="date"] {
+    width: 100%;
+}
+
+.inputform {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.inv-card {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.card-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.book-details {
+    margin-top: 20px;
 }

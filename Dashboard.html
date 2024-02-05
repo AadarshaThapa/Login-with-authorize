@@ -6,16 +6,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-
-
-
-
     <h1>
         <img id="logo" src="dashboard.png" alt="logo">
         Welcome to Login Dashboard!
     </h1>
+    <div> <button ng-click="navigateToDetails()">CLICKKK</button>
+    </div>
 
-    <div class="user-info">
+
+    <div class=" user-info">
         <img src="AUpscaled.png" alt="User" class="user-logo">
         <span class="user-name">Aadarsha Thapa</span>
     </div>
@@ -41,21 +40,24 @@
         </div>
     </nav>
 
-    <div class="small-card" ng-repeat="list in lists">
+
+    <div class="small-card" ng-repeat="list in lists" ng-click="navigateToDetails(list,$index,list.value)">
         <div class="card-body">
-            <h6 class="card-title">{{list.title}}</h6>
-            <p class="card-text">{{list.label}}</p>
-            <p class="card-text">{{list.remarks}}</p>
+            <p class="card-value">{{list.value}}</p>
+            <h5 class="card-item">{{list.item}}</h5>
+            <p class="card-title">{{list.title}}</p>
+            <p class="card-remarks">{{list.remarks}}</p>
 
         </div>
     </div>
+
 
 
     <div class="row mt-4">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Portfolio Performance</h4>
+                    <h4 class="jumbo-title">Portfolio Performance</h4>
                     <p class="card-text">View Contents Here...</p>
                     <a href="#" class="btn btn-primary">View All Reports</a>
                 </div>
@@ -77,6 +79,7 @@
 <div class="Error404" ng-if="!Logger">
     <h1>ERROR 404!</h1>
     <p>Please Log In to Continue</p>
+    <button class="Login-button"><a href="#login">Log In</a></button>
 
 
 </div>
